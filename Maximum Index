@@ -1,0 +1,90 @@
+/**
+ * Created by jenilshah on 17/02/2018.
+ */
+
+import java.io.*;
+import java.util.*;
+public class GFG {
+    public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+    int t = sc.nextInt();
+    for(int i=0;i<t;i++)
+    {
+        int len = sc.nextInt();
+        int arr[] = new int[len];
+        for(int j=0;j<len;j++)
+        {
+            arr[j] = sc.nextInt();
+        }
+        int lowerArray[] = new int[len];
+        int higherArray[] = new int[len];
+        int min = arr[0];
+        int max = arr[len-1];
+        for(int j=0;j<len;j++)
+        {
+            if(arr[j]<=min)
+            {
+                lowerArray[j] = arr[j];
+                min = arr[j];
+            }
+            else
+            {
+                lowerArray[j] = min;
+            }
+            if(arr[len-j-1]>=max)
+            {
+                higherArray[len-j-1] = arr[len-j-1];
+                max = arr[len-j-1];
+            }
+            else
+            {
+                higherArray[len-j-1] = max;
+            }
+        }
+        int start = 0;
+        int index = 0;
+        int ans = 0;
+        int diff = -1;
+        while(start<len&&index<len)
+        {
+            if(start==0) {
+                if (lowerArray[start] <= higherArray[index]) {
+                    diff++;
+                    index++;
+                } else {
+                    start++;
+                    index = start;
+                    if (ans <= diff) {
+                        ans = diff;
+                    }
+                    diff = -1;
+                }
+            }
+            else if(lowerArray[start]==lowerArray[start-1]) {
+                start++;
+                index++;
+                continue;
+            }
+            else
+            {
+                if (lowerArray[start] <= higherArray[index]) {
+                    diff++;
+                    index++;
+                } else {
+                    start++;
+                    index = start;
+                    if (ans <= diff) {
+                        ans = diff;
+                    }
+                    diff = -1;
+                }
+            }
+        }
+        if(ans<=diff)
+        {
+            ans = diff;
+        }
+        System.out.println(ans);
+    }
+    }
+}
