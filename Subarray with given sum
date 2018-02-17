@@ -1,0 +1,45 @@
+
+import java.io.*;
+import java.util.*;
+public class GFG {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int t = sc.nextInt();
+        for(int i=0;i<t;i++)
+        {
+            int len = sc.nextInt();
+            int sum = sc.nextInt();
+            int arr[] = new int[len];
+            for (int j=0;j<len;j++)
+            {
+                 arr[j] = sc.nextInt();
+            }
+            int left = 0;
+            int right = 0;
+            int total = 0;
+            boolean flag = false;
+            while(right<len)
+            {
+                total += arr[right];
+                if(total==sum)
+                {
+                    flag = true;
+                    System.out.println((left+1)+" "+(right+1));
+                    break;
+                }
+                else if(total<sum)
+                {
+                    right++;
+                }
+                else
+                {
+                    left++;
+                    right = left;
+                    total = 0;
+                }
+            }
+            if(flag==false)
+                System.out.println(-1);
+        }
+    }
+}
