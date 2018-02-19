@@ -1,0 +1,42 @@
+import java.io.*;
+import java.util.*;
+public class GFG {
+    public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+    int t = sc.nextInt();
+    for(int i=0;i<t;i++)
+    {
+        int n = sc.nextInt();
+        int arr[] = new int[2*n+2];
+        for(int j=0;j<arr.length;j++)
+        {
+            arr[j] = sc.nextInt();
+        }
+        int xor = arr[0];
+        for(int j=1;j<arr.length;j++)
+            xor = xor^arr[j];
+        int set_bit = xor & ~(xor-1);
+        ArrayList<Integer> zeros = new ArrayList<>();
+        ArrayList<Integer> ones = new ArrayList<>();
+        for(int j:arr)
+        {
+            if((j&set_bit)==0)
+            {
+                zeros.add(j);
+            }
+            else
+                ones.add(j);
+        }
+        int a = zeros.get(0);
+        int b = ones.get(0);
+        for(int j=1;j<zeros.size();j++)
+            a = a^zeros.get(j);
+        for(int j=1;j<ones.size();j++)
+            b = b^ones.get(j);
+        if(a<b)
+        System.out.println(a+" "+b);
+        else
+            System.out.println(b+" "+a);
+    }
+    }
+}
