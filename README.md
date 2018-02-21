@@ -6,3 +6,4 @@ Solutions to Geeks for Geeks questions in Java
 3. Finding the numbers - [Microsoft, MakeMyTrip, Google, Qualcomm, Amazon]
 4. Longest Valid Parenthesis - [Google]
 5. Jumping Numbers - [Google, Microsoft, Directi, Amazon, Oracle, Opera]
+6. Connect Nodes at same level - [Google, Flipkart, Amazon, Adobe, Oracle, Ola, Microsoft]
