@@ -1,0 +1,68 @@
+class GfG{
+	public boolean isInterLeave(String a,String b,String c)
+	{
+            //Your code here
+            int l1 = a.length();
+            int l2 = b.length();
+            boolean arr[][] = new boolean[l1+1][l2+1];
+            for(int i=0;i<=l1;i++)
+            {
+                for(int j=0;j<=l2;j++)
+                {
+                    if(i==0&&j==0)
+                    {
+                        arr[0][0] = true;
+                        continue;
+                    }
+                    if(j==0)
+                    {
+                       if((c.charAt(i-1)==a.charAt(i-1)))
+                    {
+                        if(arr[i-1][j]==true)
+                        arr[i][j] = true;
+                        else
+                        arr[i][j] = false;
+                    }
+                    else
+                    arr[i][j] = false;
+                    continue;
+                    }
+                    if(i==0)
+                    {
+                       if(c.charAt(j-1)==b.charAt(j-1))
+                    {
+                        if(arr[i][j-1]==true)
+                        arr[i][j] = true;
+                        else
+                        arr[i][j] = false;
+                    }
+                    else
+                    arr[i][j] = false;
+                    continue;
+                    }
+                    if(c.charAt(i+j-1)==b.charAt(j-1)&&c.charAt(i+j-1)==a.charAt(i-1))
+                    {
+                        arr[i][j] = arr[i][j-1] || arr[i-1][j];
+                    }
+                    else
+                    {
+                    if(c.charAt(i+j-1)==b.charAt(j-1))
+                    {
+                        if(arr[i][j-1]==true)
+                        arr[i][j] = true;
+                        else
+                        arr[i][j] = false;
+                    }
+                    if(c.charAt(i+j-1)==a.charAt(i-1))
+                    {
+                        if(arr[i-1][j]==true)
+                        arr[i][j] = true;
+                        else
+                        arr[i][j] = false;
+                    }
+                    }
+                }
+            }
+            return arr[l1][l2];
+	}
+}
